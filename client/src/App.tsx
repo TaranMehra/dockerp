@@ -9,7 +9,7 @@ function App() {
   const [data, SetData] = useState<ApiData>();
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/user")
+    fetch("http://72.61.240.214:4000/api/user")
       .then((res) => res.json())
       .then((data) => SetData(data))
       .catch((error) => {
