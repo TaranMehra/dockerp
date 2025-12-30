@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  production-apps:
+    build: ./production-apps
+    container_name: express-api
+    ports: 
+      - "4000:4000"
+    networks:
+      - fullstack-net
+    restart: unless-stopped
+
+  client:
+    build: ./client
+    container_name: react-client
+    ports: 
+      - "5173:3000"
+    networks:
+      - fullstack-net
+    depends_on:
+      - production-apps
+    restart: unless-stopped
+
+networks:
+  fullstack-net:
+    driver: bridge
